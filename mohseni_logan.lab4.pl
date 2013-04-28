@@ -16,3 +16,20 @@ daughter(X, Y):- child(X, Y), female(X).
 sibling(X, Y):- child(X, P), child(Y, P), X\=Y.
 brother(X, Y):- sibling(X, Y), male(Y).
 sister(X, Y):- sibling(X, Y), female(Y).
+
+% blood case:
+uncle(X, Y):- child(X, P), brother(Y, P).
+% marriage case:
+uncle(X, Y):- child(X, P), spouse(Y, P), male(Y).
+
+
+% blood case:
+aunt(X, Y):- child(X, P), sister(Y, P).
+% marriage case:
+aunt(X, Y):- child(X, P), spouse(Y, P), female(Y).
+
+grandparent(X, Y):- child(X, P), child(P, Y).
+grandfather(X, Y):- child(X, P), child(P, Y), male(Y).
+grandmother(X, Y):- child(X, P), child(P, Y), female(Y).
+
+grandchild(X, Y):- grandparent(Y, X).
