@@ -57,7 +57,9 @@ grandchild(X, Y):- grandparent(Y, X).
 %  not before giving a few alright relations.  Also `ancestor` likes to list siblings
 %  as ancestors.  Basically they "work" like so:  Y has an ancestor X if X is one of
 %  Y's  parents, or if one of Y's parents has X as an ancestor, so a recursive 
-%  relationshxp%  However, this is what I think causes the overflow.
+%  relationshxp%  However, this is what I think causes the overflow.  Since prolog
+%  is already recursive, it just ends up evaluating this over and over agian, with 
+%  no base case to escape to.  Maybe I could think up some sort of chain relationship
 ancestor(X, Y):- child(X, P), child(P, Y); ancestor(Y, P), X\=Y, X\=sibling(X, Y).
 %  descendant is just the inverse of ancestor.  However, neither function works.
 descendant(X, Y):- ancestor(Y, X).
@@ -69,11 +71,15 @@ descendant(X, Y):- ancestor(Y, X).
 older(X, Y):- born(X, A), born(Y, B), A<B.
 younger(X, Y):- born(X, A), born(Y, B), A>B.
 
-regentWhenBorn(X, Y):- 
+%  If Y was born in year A, and regent X reigned from year M to year N, then if M is 
+%  less than A, and if N is greater than A, (M<A<N), then person Y was born during
+%  the reign of regent X.
+regentWhenBorn(X, Y):- born(Y, A), reigned(X, M, N), M<A, N>A.
 
 %  Cousins are like siblings, but with grandparents, instead of parents.
 %  note each relationship is computed at most 4 times, since that is the maximum 
-%  of grandparents a person can have
+%  of grandparents a person can have.  Oh wait, I guess a person's siblings also share
+%  grandparents.
 cousin(X, Y):- grandparent(G, X), grandparent(G, Y), X\=Y.
 
 
