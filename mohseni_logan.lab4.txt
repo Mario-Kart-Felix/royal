@@ -1,0 +1,215 @@
+Logan Mohseni
+Lab 4 Prolog
+Lab questions
+
+1.father(X, 'Queen Elizabeth II').  = 'King George VI'
+               parent('King George VI', 'Queen Elizabeth II), male('King George Vi')
+
+2.grandmother(X, 'Queen Elizabeth II). = 'Prince William'
+      parent('Prince Charles' 'Prince William'), parent('Queen Elizabeth II', 
+      'Prince William'), female('Queen Elizabeth II').
+
+
+3.grandfather(X, 'Queen Elizabeth II). = no.
+    fmeale('Queen Elizeabeth II).
+
+
+4.grandpartent(X, 'Queen Elizabeth II). = Prince William, Prince Henry.
+      parent('Prince Charles' 'Prince William'), parent('Queen Elizabeth II', 
+      'Prince William'), female('Queen Elizabeth II').
+
+5.grandparent('Queen Elizabeth II', X) = 'King George V'; 'Queen Mary';
+    parent(X, 'Queen Elizabeth II', X) => 'king georg iv, lady elizabeth bowes.
+    parent(X, 'king george iv, X) => 'King george V, 'Queen mary'.
+
+6. sibling(X, 'Queen Elizabeth II'). => 'Princess Margaret'
+  parent(X, queen elizabeth), parent(X, y) = princess margaret.
+
+7.son(X, 'Queen Elizabeth II'). = false
+  son(x, y), female(y) => false
+
+8.  daughter(X, 'Queen Elizabeth II'). = 'princess anne.'
+  parent(x, queen elizabeth ii), female(x) = princess anne.
+
+9.  aunt(X, 'Lady Diana Spencer').= 'prince william', 'prince henry.'
+  parent(x, y), spouse(y, 'lady diana'),
+              spouse(prince charles, lady diana),
+                  parent(x, prince chares)
+                      prince william, prince henry
+
+10.  spouse(X, 'Prince William'). = false
+    married(X, prince william) = false, married(prince william, x) = false
+
+11. ancestor(X, 'Prince Henry'). = Stack over flow...  due to my faulty 
+implementation.  See comments in the code for more details.
+
+12.  descendant('Queen Victoria', X). =  some wierd error:  undefined procedure: parent/2  .  
+
+13. older( 'Prince Henry','Prince William'). =>  no
+born(prince henry, X) =>  X = 1984
+born(prince william, y) => y = 1982
+X<Y => 1984<1982 =>  false = no
+
+
+14.  older(X, 'Queen Elizabeth II').
+
+X = 'Queen Victoria' ? ; 
+X = 'Princess Alexandra of Denmark' ? ; 
+X = 'Queen Mary' ? ; 
+X = 'Mrs Simpson' ? ; 
+X = 'Lady Elizabeth Bowes-Lyon' ? ; 
+X = 'Prince Albert' ? ; 
+X = 'King Edward VII' ? ; 
+X = 'King George V' ? ; 
+X = 'King Edward VIII' ? ; 
+X = 'King George VI' ? ; 
+X = 'Prince Philip' ? ;
+
+example trace:
+born(queen elizabeth, X) =>  X = 1926
+born(queen victoria, Y) => y = 1819.
+1819<1926 = true
+return x = queen victoria
+
+15.  regentWhenBorn(X, 'Queen Elizabeth II'). = 'king george v'
+born(queen elizabeth, a) => a = 1926
+reigned(king george v, x, y) => x = 1910, y = 1936
+x<a<y => 1910<1926<1936 = true
+
+
+16.  After I got used to the environment, I liked the repl.  I used both swi/prolog 
+and gnu prolog.  Swi is definitely nicer.  it remembers your history from session to
+session, and has nice tab completion, for example, it could complete things from
+inside the fils.  Also, I guess it's kind of cool how prolog works, the language
+is inherintly recursive, so from purely an aesthetic point of view it's neat.  Also,
+after I got used to it, I kind of liked the syntax, although I did find it a bit 
+verbose.  I think it's interesting to look at the syntax of languages that
+don't derive from C/Algol, just because it's sort of an accident of history that
+we use brackets et al, instead of something completely forign, which prolog is.
+
+17.  The documentation is horrible for prolog.  For example, I tried to find how to
+do a logical not.  I read pages and pages of abstruse logic papers, I still have
+no clue whether it is possible or not.  Also, even though it's no fault of the 
+language, the way it workd was so foriegn and unpredictable that I had a really hard
+time being productive.  I felt like I had a pretty good grasp of recursion and 
+boolean logic, it turns out I don't.  I don't know if my ego will ever recover from 
+this lab.
+
+18.  I did sort of enjoy this lab, after I got used to prolog.  I liked and disliked 
+how different it was from "normal" programming. when things worked, I thought it was
+pretty cool. When things blew up, I cursed the language.  Also, as I said, I thought
+the repl was well implemented.  There seemed to be a lot of inconsistancies between
+the different implementations of the language.  I used both SWI and GNU prolog.  
+some things would work in one language, and mysteriously fail in the other, for 
+example the loading of files.  Also, I could never re-load a file after editing it
+in SWI, I'd have to completely quit out of the session to reload a file.  And then
+trying to find anything on the documentation was...  bad.  I like languages, and I 
+like obscure languages.  Prolog has some of the most intimidating, obscure documenta
+tion I have ever seen, with no sign of a beginner's tutorial.
+
+19.  I spent about 6 hours on this lab, but at least 2 of those hourse were just
+staring into the abyss of my own inadequacies, and then about 4 hours of actual work
+
+20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  20.  I don't think I'll use prolog again, but it does look good on my git hub.  I 
+might implement something toy-like in prolog, just to make it look like I'm a 
+better programmer than I am.  Also, I'm kind of intriged by how prolog itself is
+implemented.  It seems so simple on the outside, but it must be fantasically complex
+below the surface, otherwise I think it would be easier to implement something like 
+not(X).  
+
+
