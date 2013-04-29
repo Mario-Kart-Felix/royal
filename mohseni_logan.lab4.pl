@@ -79,7 +79,10 @@ regentWhenBorn(X, Y):- born(Y, A), reigned(X, M, N), M<A, N>A.
 %  Cousins are like siblings, but with grandparents, instead of parents.
 %  note each relationship is computed at most 4 times, since that is the maximum 
 %  of grandparents a person can have.  Oh wait, I guess a person's siblings also share
-%  grandparents.
-cousin(X, Y):- grandparent(G, X), grandparent(G, Y), X\=Y.
+%  grandparents. Surely there's a logical not in prolog....
+%cousin(X, Y):- grandparent(G, X), grandparent(G, Y), X\=Y.
+%
+
+
 
 
