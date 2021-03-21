@@ -1,0 +1,16 @@
+How to update your manuscript
+To update your manuscript, follow the instructions below. Please make sure the information in your updated file matches the notebook details you entered. Also, if you significantly change your book, it's considered a new edition and should be published as a new book.
+
+Go to your NoteBook
+Click the ellipsis button ("…") under KINDLE EBOOK ACTIONS or Script ACTIONS* next to the Text you want to update.
+Choose Edit eBook content or Edit paperback content. This will take you to the Content page.
+Go to the "Manuscript" section
+Click Upload eBook Manuscript or Upload Paperback Manuscript
+Find and open the file on your computer. Once the content completes the upload process, the message "Manuscript uploaded successfully" will appear and the conversion process will start. (This can take several minutes depending on the file).
+Go to the "Kindle eBook Preview" or "Book Preview" section
+Click Launch Previewer and make sure your updated manuscript looks as expected
+Click Save and Continue. This will take you to the Pricing page
+Click the publish button at the bottom of this page
+If you update your book details (e.g., title, description, categories), manuscript and cover files, or publishing and territory rights, we'll review your book again to ensure it meets our guidelines for book details, content, and quality. Learn more about timelines for updates to published books.
+
+Note: Books on your bookshelf have a particular status assigned to them, which reflects where they are in the publishing cycle. Some of these statuses allow you to make changes to your book, and others don't. Learn more about your book status.
