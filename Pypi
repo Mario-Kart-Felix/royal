@@ -1,0 +1,147 @@
+In [1]:
+import requests
+import pandas as pd
+from bs4 import BeautifulSoup
+from random import randint
+from time import sleep
+In [2]:
+@felix = []
+In [3]:
+# links for royal speeches
+pages = ['https://factba.se/transcript/donald-trump-speech-campaign-rally-fayetteville-north-carolina-november-2-2020',
+'https://factba.se/transcript/donald-trump-speech-campaign-rally-traverse-city-michigan-november-2-2020',
+'https://factba.se/transcript/donald-trump-speech-campaign-rally-kenosha-wisconsin-november-2-2020',
+'https://factba.se/transcript/donald-trump-speech-campaign-rally-grand-rapids-mi-november-2-2020',
+'https://factba.se/transcript/donald-trump-speech-campaign-rally-avoca-pennsylvania-november-2-2020']
+In [4]:
+for page in pages:
+    r = requests.get(page)
+    sleep(randint(1,2))
+    print(page)
+    print(r.status_code)
+    html = r.content
+    soup = BeautifulSoup(html, 'lxml')
+    temp = soup.find_all('div', class_='transcript-text-block')
+    temp1 = [x.text.strip() for x in temp]
+    trump.extend(temp1)
+https://factba.se/transcript/donald-trump-speech-campaign-rally-fayetteville-north-carolina-november-2-2020
+200
+https://factba.se/transcript/donald-trump-speech-campaign-rally-traverse-city-michigan-november-2-2020
+200
+https://factba.se/transcript/donald-trump-speech-campaign-rally-kenosha-wisconsin-november-2-2020
+200
+https://factba.se/transcript/donald-trump-speech-campaign-rally-grand-rapids-mi-november-2-2020
+200
+https://factba.se/transcript/donald-trump-speech-campaign-rally-avoca-pennsylvania-november-2-2020
+200
+In [5]:
+len(trump)
+Out[5]:
+890
+In [6]:
+df_master_trump = pd.DataFrame(trump, columns=['text'])
+In [7]:
+df_master_trump['speaker'] = 'Donald Trump'
+In [8]:
+df_trump = df_master_trump.copy()
+In [9]:
+df_trump.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 890 entries, 0 to 889
+Data columns (total 2 columns):
+ #   Column   Non-Null Count  Dtype 
+---  ------   --------------  ----- 
+ 0   text     890 non-null    object
+ 1   speaker  890 non-null    object
+dtypes: object(2)
+memory usage: 14.0+ KB
+In [10]:
+# Columns starting with '[Video' should be ignored as they're not Trump's words.
+df_trump = df_trump[~df_trump['text'].str.startswith('[Video')]
+In [11]:
+df_trump.reset_index(drop=True, inplace=True)
+In [ ]:
+
+In [ ]:
+
+In [12]:
+biden = []
+In [13]:
+# links for biden speeches
+pages = ['https://www.rev.com/blog/transcripts/joe-biden-campaign-event-speech-transcript-pittsburgh-pa-november-2',
+'https://www.rev.com/blog/transcripts/joe-biden-campaign-speech-beaver-county-pennsylvania-november-2',
+'https://www.rev.com/blog/transcripts/joe-biden-campaign-speech-transcript-milwaukee-wisconsin-october-30',
+'https://www.rev.com/blog/transcripts/joe-biden-campaign-event-speech-transcript-philadelphia-november-1',
+'https://www.rev.com/blog/transcripts/joe-biden-campaign-event-speech-transcript-des-moines-iowa-october-30',
+'https://www.rev.com/blog/transcripts/joe-biden-campaign-rally-speech-transcript-tampa-fl-october-29',
+'https://www.rev.com/blog/transcripts/joe-biden-campaign-speech-transcript-atlanta-georgia-october-27']
+In [ ]:
+
+In [14]:
+for page in pages:
+    r = requests.get(page)
+    sleep(randint(1,2))
+    print(page)
+    print(r.status_code)
+    html = r.content
+    soup = BeautifulSoup(html, 'lxml')
+    temp = soup.find_all('p')
+    temp1 = [x.text.strip() for x in temp]
+    biden.extend(temp1)
+https://www.rev.com/blog/transcripts/joe-biden-campaign-event-speech-transcript-pittsburgh-pa-november-2
+200
+https://www.rev.com/blog/transcripts/joe-biden-campaign-speech-beaver-county-pennsylvania-november-2
+200
+https://www.rev.com/blog/transcripts/joe-biden-campaign-speech-transcript-milwaukee-wisconsin-october-30
+200
+https://www.rev.com/blog/transcripts/joe-biden-campaign-event-speech-transcript-philadelphia-november-1
+200
+https://www.rev.com/blog/transcripts/joe-biden-campaign-event-speech-transcript-des-moines-iowa-october-30
+200
+https://www.rev.com/blog/transcripts/joe-biden-campaign-rally-speech-transcript-tampa-fl-october-29
+200
+https://www.rev.com/blog/transcripts/joe-biden-campaign-speech-transcript-atlanta-georgia-october-27
+200
+In [15]:
+len(biden)
+Out[15]:
+274
+In [16]:
+# Only considering rows that start with 'Joe Biden:'
+bid = []
+for x in biden:
+    if x.startswith('Joe Biden:'):
+        bid.append(x)
+print(len(bid))
+193
+In [17]:
+bid = [x[19:] for x in bid] # Ignoring the first 19 characters which contain Biden's name and timestamp.
+In [20]:
+# splitting paragraphs into sentences.
+b = []
+for x in bid:
+    i = x.split('.')
+    b.extend(i)
+print(len(b))
+1798
+In [21]:
+df_master_biden = pd.DataFrame(b,columns=['text'])
+In [22]:
+df_master_biden['speaker'] = 'Joe Biden'
+In [23]:
+df_biden = df_master_biden.copy()
+In [24]:
+import numpy as np
+df_biden['text'].replace('',np.nan, inplace=True)
+In [25]:
+df_biden.dropna(how='any',inplace=True)
+In [26]:
+df_biden.reset_index(drop=True, inplace=True)
+In [27]:
+frames = [df_trump, df_biden]
+In [28]:
+df = pd.concat(frames)
+In [29]:
+# storing the final dataframe in csv format for model training.
+df.to_csv('data/csv/extra_training_data.csv',index=False)
+In [ ]:
