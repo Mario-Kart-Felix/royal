@@ -1,7 +1,8 @@
-Logan Mohseni
+Mario H Felix Jr
 Lab 4 Prolog
 Lab questions
-
+0.Cloudio H. Felix
+King Henry
 1.father(X, 'Queen Elizabeth II').  = 'King George VI'
                parent('King George VI', 'Queen Elizabeth II), male('King George Vi')
 
